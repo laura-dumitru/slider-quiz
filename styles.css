@@ -1,7 +1,10 @@
 body {
   background-color: #f1e3d3;
+  font-family: "Karla", sans-serif;
 }
+
 h1,
+h2,
 p {
   text-align: center;
   margin: 1.5em;
@@ -12,43 +15,79 @@ main {
   display: block;
   margin: 0 auto;
   margin-top: 5em;
-  max-width: 33vw;
-  padding: 4em;
+  max-width: 40vw;
+  height: 20em;
   border-radius: 6px;
+}
+img {
+  max-width: 50px;
+  margin-top: 3em;
+}
+.main-container,
+.images-container {
+  max-width: 20vw;
+  margin: 0 auto;
 }
 
 input[type="range"] {
-  width: 300px; /* Set the desired width for the slider */
+  -webkit-appearance: none; /* WebKit/Blink */
+  -moz-appearance: none; /* Gecko */
+  appearance: none; /* Standard */
+  position: absolute;
+  background-color: #8e7dbe;
+  border-radius: 10px;
+  left: 39%;
+  width: 20%;
+  height: 5px;
+  margin-top: 0;
 }
+
 input[type="range"]::-webkit-slider-thumb {
+  box-shadow: none;
   -webkit-appearance: none;
-  appearance: none;
-  width: 32px; /* Set the desired width for the slider handle */
-  height: 32px; /* Set the desired height for the slider handle */
+  background: transparent;
+  background-image: url("images/moon.svg");
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
+
 .line {
-  height: 50px;
+  height: 40px;
   width: 5px;
   border-radius: 2px;
   background-color: #8e7dbe;
-  margin-right: 3em;
 }
 .lines-container,
-.bubbles-container {
-  display: flex; /* Set the display property to flex for horizontal layout */
-  justify-content: center;
-}
-.bubble {
-  height: 40px;
-  width: 60px;
-  border-radius: 50%;
-  background-color: white;
-  margin-right: 0.5em;
+.images-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-.footer-icons {
-  font-size: 2em;
-  top: 15em;
-  display: block;
-  margin: 0 auto;
+.bubble {
+  color: #8252ab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5em;
+  width: 5em;
+  background-color: white;
+  font-size: 1em;
+  border-radius: 5em;
+  margin-top: 0.5em;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 45%;
+  margin-bottom: 0.3em;
+  font-size: 3em;
+}
+footer a {
+  color: #8e7dbe;
+  text-decoration: none;
+  transition: color 0.5s ease-in-out;
+}
+footer a:hover {
+  color: #99c1b9;
 }
