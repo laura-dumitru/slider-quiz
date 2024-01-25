@@ -84,9 +84,10 @@ footer {
   font-size: 3em;
 }
 footer a {
-  color: #8e7dbe;
+  color: #8252ab;
   text-decoration: none;
   transition: color 0.5s ease-in-out;
+  margin-right: 0.5em;
 }
 footer a:hover {
   color: #99c1b9;
