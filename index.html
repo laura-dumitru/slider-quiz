@@ -5,30 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/3d72a2e9e3.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <h1>Slider Quiz</h1>
-    <p>How many hours of sleep does an adult need every night?</p>
+    <h2>How many hours of sleep does an adult need every night?</h2>
     <p>Slide to record your answer:</p>
     <main>
-      <div class="bubbles-container">
-        <div class="bubble">7 hrs</div>
-        <div class="bubble">8 hrs</div>
-        <div class="bubble">9 hrs</div>
-        <div class="bubble">10 hrs</div>
+      <div class="images-container">
+        <div class="column">
+          <img src="images/moon 3.png" />
+          <div class="bubble">6 hrs</div>
+        </div>
+        <div class="column">
+          <img src="images/moon 3.png" />
+          <div class="bubble">7 hrs</div>
+        </div>
+        <div class="column">
+          <img src="images/moon 3.png" />
+          <div class="bubble">8 hrs</div>
+        </div>
+        <div class="column">
+          <img src="images/moon 3.png" />
+          <div class="bubble">9 hrs</div>
+        </div>
       </div>
-      <div class="lines-container">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+
+      <div class="main-container">
+        <div class="lines-container">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
       </div>
       <div class="slider">
         <input type="range" id="slider" name="slider" min="0" max="100" value="0" />
       </div>
     </main>
-    <footer class="footer-icons">
+    <p>You selected ""</p>
+    <p>The correct answer is ""</p>
+
+    <footer class="footer">
       <div class="links">
         <a href="https://www.instagram.com/lauramona_d/" target="_blank" title="Link to Instagram">
           <i class="fab fa-instagram"></i>
