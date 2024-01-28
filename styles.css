@@ -70,7 +70,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .bubble {
-  color: #8252ab;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
