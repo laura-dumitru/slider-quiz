@@ -33,11 +33,12 @@ input[type="range"] {
   -webkit-appearance: none; /* WebKit/Blink */
   -moz-appearance: none; /* Gecko */
   appearance: none; /* Standard */
-  position: absolute;
+  /* position: absolute; */
   background-color: #8e7dbe;
-  border-radius: 10px;
-  left: 39%;
-  width: 20%;
+  border-radius: 0.5em;
+  /* left: 39%; */
+  /* width: 20%; */
+  width: 55%;
   height: 5px;
   margin-top: 0;
 }
@@ -47,15 +48,13 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: transparent;
   background-image: url("images/moon.svg");
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 3em;
+  height: 3em;
 }
 
 .line {
-  height: 40px;
+  min-height: 3em;
   width: 5px;
-  border-radius: 2px;
   background-color: #8e7dbe;
 }
 .lines-container,
