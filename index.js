@@ -33,6 +33,8 @@ slider.addEventListener("input", function (event) {
     //column.style.top = "-3em"; // Adjust the top position to push the column elements upwards
     lines.forEach((line) => {
       //line.style.height = "100px";
+      line.style.backgroundColor = "#8252AB";
+      slider.style.backgroundColor = "#8252AB";
     });
   });
   //console.log(mapResult);
@@ -58,6 +60,7 @@ slider.addEventListener("input", function (event) {
       slider.value = reverseMap;
     }, 1000);
   }
+
   userSelectedText.innerHTML = `You selected <strong>${currentAnswer}</strong>.`;
   correctAnswerText.innerHTML = `The correct answer is: <strong>${correctAnswer}</strong>.`;
 });
