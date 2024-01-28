@@ -1,3 +1,9 @@
+// should have a small hand that animates across the slider then disappears
+//fix the snap
+//make the lines move up
+//add transition
+// add % on slide and reset back to 0
+
 const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
 const correctAnswer = answers[correctAnswerIndex];
@@ -5,6 +11,8 @@ const column = document.querySelectorAll(".column");
 
 const slider = document.getElementById("slider");
 let lines = document.querySelectorAll(".line");
+
+const button = document.getElementById("reset");
 
 const userSelectedText = document.querySelector(".user-selected");
 const correctAnswerText = document.querySelector(".correct-answer");
@@ -63,4 +71,13 @@ slider.addEventListener("input", function (event) {
 
   userSelectedText.innerHTML = `You selected <strong>${currentAnswer}</strong>.`;
   correctAnswerText.innerHTML = `The correct answer is: <strong>${correctAnswer}</strong>.`;
+
+  button.addEventListener("click", function () {
+    console.log("click");
+    slider.value = 0;
+    slider.style.backgroundColor = "#8e7dbe";
+    lines.forEach((line) => {
+      line.style.backgroundColor = "#8e7dbe";
+    });
+  });
 });
