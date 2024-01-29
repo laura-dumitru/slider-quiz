@@ -1,14 +1,14 @@
 // should have a small hand that animates across the slider then disappears
 //fix the snap
-//make the lines move up
-//add transition
-// add % on slide and reset back to 0
+// make the lines move up and have different height
+// reset % back to 0
+// responsive
 
 const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
 const correctAnswer = answers[correctAnswerIndex];
 const column = document.querySelectorAll(".column");
-const percents = document.querySelectorAll(".percent");
+let percents = document.querySelectorAll(".percent");
 
 const slider = document.getElementById("slider");
 const lines = document.querySelectorAll(".column");
@@ -25,7 +25,7 @@ function mapRange(inputMin, inputMax, outputMin, outputMax, value) {
   return ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin) + outputMin;
 }
 
-slider.style.transition = "value 1s ease-in-out";
+//slider.style.transition = "value 10s ease-in-out";
 
 slider.addEventListener("input", function (event) {
   const linesArray = Array.from(lines);
@@ -41,7 +41,7 @@ slider.addEventListener("input", function (event) {
     //column.style.position = "relative";
     //column.style.top = "-1px";
     lines.forEach((line) => {
-      line.style.height = "80px";
+      line.style.height = "120px";
       line.style.backgroundColor = "#8252AB";
       slider.style.backgroundColor = "#8252AB";
     });
@@ -77,6 +77,7 @@ slider.addEventListener("input", function (event) {
   const percentages = ["9%", "20%", "39%", "32%"];
 
   percents.forEach((percent, index) => {
+    percent.style.opacity = "1";
     percent.innerHTML = percentages[index];
   });
 
@@ -84,8 +85,10 @@ slider.addEventListener("input", function (event) {
     console.log("click");
     slider.value = 0;
     slider.style.backgroundColor = "#8e7dbe";
+
     lines.forEach((line) => {
       line.style.backgroundColor = "#8e7dbe";
+      line.style.height = "50px";
     });
   });
 });
