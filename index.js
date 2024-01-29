@@ -1,5 +1,5 @@
 // should have a small hand that animates across the slider then disappears
-//fix the snap
+//different font
 // make the lines move up and have different height
 // reset % back to 0
 // responsive
@@ -57,12 +57,13 @@ slider.addEventListener("input", function (event) {
     // const snapPoints = [10, 37, 64, 90];
     //mapRange(0, linesArray.length - 1, event.target.min, event.target.max, correctAnswerIndex);
 
+    const offset = 0.1;
     const reverseMap = mapRange(
       0,
       linesArray.length - 1,
       event.target.min,
       event.target.max,
-      correctAnswerIndex
+      correctAnswerIndex - offset
     );
 
     setTimeout(() => {
