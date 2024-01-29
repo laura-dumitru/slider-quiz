@@ -8,9 +8,10 @@ const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
 const correctAnswer = answers[correctAnswerIndex];
 const column = document.querySelectorAll(".column");
+const percents = document.querySelectorAll(".percent");
 
 const slider = document.getElementById("slider");
-let lines = document.querySelectorAll(".line");
+const lines = document.querySelectorAll(".column");
 
 const button = document.getElementById("reset");
 
@@ -37,14 +38,15 @@ slider.addEventListener("input", function (event) {
 
   //console.log(event.target.value);
   Array.from(column).forEach((column) => {
-    column.style.position = "relative"; // Set position to relative
-    //column.style.top = "-3em"; // Adjust the top position to push the column elements upwards
+    //column.style.position = "relative";
+    //column.style.top = "-1px";
     lines.forEach((line) => {
-      //line.style.height = "100px";
+      line.style.height = "80px";
       line.style.backgroundColor = "#8252AB";
       slider.style.backgroundColor = "#8252AB";
     });
   });
+
   //console.log(mapResult);
   if (currentAnswer === correctAnswer) {
     console.log("You got it right!");
@@ -71,6 +73,12 @@ slider.addEventListener("input", function (event) {
 
   userSelectedText.innerHTML = `You selected <strong>${currentAnswer}</strong>.`;
   correctAnswerText.innerHTML = `The correct answer is: <strong>${correctAnswer}</strong>.`;
+
+  const percentages = ["9%", "20%", "39%", "32%"];
+
+  percents.forEach((percent, index) => {
+    percent.innerHTML = percentages[index];
+  });
 
   button.addEventListener("click", function () {
     console.log("click");
