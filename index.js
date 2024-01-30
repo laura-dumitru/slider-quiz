@@ -4,6 +4,8 @@
 // reset % back to 0
 // responsive
 
+//console.log(gsap);
+
 const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
 const correctAnswer = answers[correctAnswerIndex];
@@ -18,8 +20,26 @@ const button = document.getElementById("reset");
 const userSelectedText = document.querySelector(".user-selected");
 const correctAnswerText = document.querySelector(".correct-answer");
 
+const pointer = document.querySelector(".lucide.lucide-pointer");
+
 // linesArray.length = [0-3] (4)
 // event.target.value [1-100] (%)
+
+function pulse() {
+  gsap.fromTo(
+    pointer,
+    { scale: 1 }, // Initial state
+    { scale: 1.1, duration: 0.5, repeat: 2, onComplete: moveRight, ease: Power1.easeInOut } // End state and animation options
+  );
+}
+pulse();
+
+function moveRight() {
+  gsap.to(pointer, { x: "+=630", duration: 1.5, onComplete: moveBack, ease: Power1.easeInOut });
+}
+function moveBack() {
+  gsap.to(pointer, { x: "-=630", duration: 1.5, ease: Power1.easeInOut });
+}
 
 function mapRange(inputMin, inputMax, outputMin, outputMax, value) {
   return ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin) + outputMin;
