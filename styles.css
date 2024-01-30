@@ -20,7 +20,6 @@ img {
 
 main {
   background-color: #99c1b9;
-  text-align: center;
   margin: 0 auto;
   margin-top: 2.5em;
   padding: 4em;
@@ -86,6 +85,9 @@ input[type="range"]::-webkit-slider-thumb {
   background-image: url("images/moon.svg");
   width: 3em;
   height: 3em;
+}
+.lucide.lucide-pointer {
+  margin-top: 1em;
 }
 
 button {
