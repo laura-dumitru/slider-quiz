@@ -1,5 +1,5 @@
-//different font
-// responsive
+// During the animation I stopped the slider interaction but I also want the handle not to move
+//Line heights are a bit random can't get them to look ok without the line piercing through the top
 
 const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
@@ -35,15 +35,30 @@ function startAnimation() {
   pulse();
 
   function moveRight() {
-    gsap.to(pointer, { x: "+=630", duration: 1, onComplete: moveBack, ease: Power1.easeInOut });
+    let x;
+    if (window.innerWidth >= 786) {
+      gsap.to(pointer, { x: "+=630", duration: 1, onComplete: moveBack, ease: Power1.easeInOut });
+    } else {
+      gsap.to(pointer, { x: "+=280", duration: 1, onComplete: moveBack, ease: Power1.easeInOut });
+    }
   }
   function moveBack() {
-    gsap.to(pointer, {
-      x: "-=630",
-      duration: 1,
-      ease: Power1.easeInOut,
-      onComplete: iconDisappear,
-    });
+    let x;
+    if (window.innerWidth >= 786) {
+      gsap.to(pointer, {
+        x: "-=630",
+        duration: 1,
+        ease: Power1.easeInOut,
+        onComplete: iconDisappear,
+      });
+    } else {
+      gsap.to(pointer, {
+        x: "-=270",
+        duration: 1,
+        ease: Power1.easeInOut,
+        onComplete: iconDisappear,
+      });
+    }
   }
   // Define the icon disappear animation
   function iconDisappear() {
@@ -72,19 +87,16 @@ function addEventListener() {
     //console.log(event.target.value);
     Array.from(columns).forEach((column, i) => {
       column.style.height = `${heights[i]}px`;
-      column.style.backgroundColor = "#8252AB";
-      slider.style.backgroundColor = "#8252AB";
+      column.style.transition = " 1s ease-in-out";
+      column.style.backgroundColor = "#783f8e";
+      slider.style.backgroundColor = "#783f8e";
     });
 
-    //console.log(mapResult);
     if (currentAnswer === correctAnswer) {
-      console.log("You got it right!");
+      //console.log("You got it right!");
       // do nothing
     } else {
       console.log("You got it wrong!");
-      // snap to correct answer with delay
-      // const snapPoints = [10, 3s7, 64, 90];
-      //mapRange(0, columnsArray.length - 1, event.target.min, event.target.max, correctAnswerIndex);
 
       const offset = 0.1;
       const reverseMap = mapRange(
@@ -101,8 +113,8 @@ function addEventListener() {
       }, 1000);
     }
 
-    userSelectedText.innerHTML = `You selected: <strong>${currentAnswer}</strong>.`;
-    correctAnswerText.innerHTML = `The correct answer is: <strong>${correctAnswer}</strong>.`;
+    userSelectedText.innerHTML = `You selected: <em>${currentAnswer}</em>.`;
+    correctAnswerText.innerHTML = `The correct answer is: <em>${correctAnswer}</em>.`;
 
     const percentages = ["15%", "20%", "35%", "30%"];
 
@@ -113,13 +125,14 @@ function addEventListener() {
 
     button.addEventListener("click", function () {
       slider.value = 0;
-      slider.style.backgroundColor = "#8e7dbe";
+      slider.style.backgroundColor = "#8252ab";
       userSelectedText.innerHTML = `You selected:`;
       correctAnswerText.innerHTML = `The correct answer is:`;
 
       columns.forEach((column) => {
-        column.style.backgroundColor = "#8e7dbe";
+        column.style.backgroundColor = "#8252ab";
         column.style.height = "40px";
+        column.style.transition = "none";
       });
       percents.forEach((percent, index) => {
         percent.style.opacity = "0";
