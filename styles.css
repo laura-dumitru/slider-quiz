@@ -140,10 +140,6 @@ footer a:hover {
     margin: 0.5em;
   }
 
-  input[type="range"]::-webkit-slider-thumb {
-    width: 2.5em;
-    height: 2.5em;
-  }
   .items-container {
     justify-content: space-evenly;
   }
