@@ -68,7 +68,7 @@ function mapRange(inputMin, inputMax, outputMin, outputMax, value) {
 //slider.style.transition = "value 10s ease-in-out";
 //if animation finished running add slider event listener
 
-slider.addEventListener("input", function (event) {
+slider.addEventListener("change", function (event) {
   const columnsArray = Array.from(columns);
   //console.log(event);
   const mapResult = Math.round(
