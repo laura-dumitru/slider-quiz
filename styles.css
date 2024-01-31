@@ -140,6 +140,12 @@ footer a:hover {
     width: 2.5em;
     height: 2.5em;
   }
+  .items-container {
+    justify-content: space-evenly;
+  }
+  .column {
+    margin-left: 2em;
+  }
   .bubble {
     height: 2.5em;
     width: 4em;
