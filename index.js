@@ -1,6 +1,3 @@
-// During the animation I stopped the slider interaction but I also want the handle not to move
-//Line heights are a bit random can't get them to look ok without the line piercing through the top
-
 const answers = ["6 hrs", "7 hrs", "8 hrs", "9 hrs"];
 const correctAnswerIndex = 2;
 const correctAnswer = answers[correctAnswerIndex];
@@ -8,9 +5,11 @@ const correctAnswer = answers[correctAnswerIndex];
 const heights = [60, 80, 100, 80];
 
 const columns = document.querySelectorAll(".column");
+
 const percents = document.querySelectorAll(".percent");
 
 const slider = document.getElementById("slider");
+const { width: sliderWidth } = slider.getBoundingClientRect();
 
 const button = document.getElementById("reset");
 
@@ -19,57 +18,53 @@ const correctAnswerText = document.querySelector(".correct-answer");
 
 const pointer = document.querySelector(".lucide.lucide-pointer");
 
+const mobile = window.innerWidth < 786; //640
+
 // columnsArray.length = [0-3] (4)
 // event.target.value [1-100] (%)
 
 let animationFinished = false;
 
+const ease = Power1.easeInOut;
+
 function startAnimation() {
+  slider.disabled = true;
+
   function pulse() {
     gsap.fromTo(
       pointer,
       { scale: 1 }, // Initial state
-      { scale: 1.1, duration: 0.5, repeat: 2, onComplete: moveRight, ease: Power1.easeInOut } // End state and animation options
+      { scale: 1.1, duration: 0.5, repeat: 2, onComplete: moveRight, ease } // End state and animation options
     );
   }
   pulse();
 
   function moveRight() {
-    let x;
-    if (window.innerWidth >= 786) {
-      gsap.to(pointer, { x: "+=630", duration: 1, onComplete: moveBack, ease: Power1.easeInOut });
-    } else {
-      gsap.to(pointer, { x: "+=280", duration: 1, onComplete: moveBack, ease: Power1.easeInOut });
-    }
+    gsap.to(pointer, { x: `+=${sliderWidth - 20}`, duration: 1, onComplete: moveBack, ease });
   }
   function moveBack() {
-    let x;
-    if (window.innerWidth >= 786) {
-      gsap.to(pointer, {
-        x: "-=630",
-        duration: 1,
-        ease: Power1.easeInOut,
-        onComplete: iconDisappear,
-      });
-    } else {
-      gsap.to(pointer, {
-        x: "-=270",
-        duration: 1,
-        ease: Power1.easeInOut,
-        onComplete: iconDisappear,
-      });
-    }
+    gsap.to(pointer, {
+      x: `-=${sliderWidth - 20}`,
+      duration: 1,
+      ease: Power1.easeInOut,
+      onComplete: iconDisappear,
+    });
   }
   // Define the icon disappear animation
   function iconDisappear() {
     gsap.to(pointer, { opacity: 0, duration: 2, onComplete: () => (animationFinished = true) });
     addEventListener();
+    slider.disabled = false;
   }
 }
 startAnimation();
 
+// TODO: GSAP slider.value
+
 function mapRange(inputMin, inputMax, outputMin, outputMax, value) {
-  return ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin) + outputMin;
+  return Math.round(
+    ((value - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin) + outputMin
+  );
 }
 
 //slider.style.transition = "value 10s ease-in-out";
@@ -82,12 +77,12 @@ function addEventListener() {
       mapRange(event.target.min, event.target.max, 0, columnsArray.length - 1, event.target.value)
     );
     const currentAnswer = answers[mapResult];
-    console.log(mapResult);
+    //console.log(mapResult);
 
     //console.log(event.target.value);
     Array.from(columns).forEach((column, i) => {
       column.style.height = `${heights[i]}px`;
-      column.style.transition = " 1s ease-in-out";
+      column.style.transition = " 0.7s ease-in-out";
       column.style.backgroundColor = "#783f8e";
       slider.style.backgroundColor = "#783f8e";
     });
@@ -98,18 +93,19 @@ function addEventListener() {
     } else {
       console.log("You got it wrong!");
 
-      const offset = 0.1;
       const reverseMap = mapRange(
         0,
         columnsArray.length - 1,
         event.target.min,
         event.target.max,
-        correctAnswerIndex - offset
+        correctAnswerIndex
       );
+
+      const margin = mobile ? 0 : 4;
 
       setTimeout(() => {
         //slider.value = snapPoints[correctAnswerIndex];
-        slider.value = reverseMap;
+        slider.value = reverseMap - margin;
       }, 1000);
     }
 
