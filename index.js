@@ -17,6 +17,7 @@ const userSelectedText = document.querySelector(".user-selected");
 const correctAnswerText = document.querySelector(".correct-answer");
 
 const pointer = document.querySelector(".lucide.lucide-pointer");
+const slideText = document.getElementById("slideText");
 
 const mobile = window.innerWidth < 786; //640
 
@@ -88,10 +89,16 @@ function addEventListener() {
     });
 
     if (currentAnswer === correctAnswer) {
+      slideText.innerHTML = "You got it right!";
+      slideText.style.color = "#783f8e";
+      //slideText.style.fontSize = "1.5em";
+
       //console.log("You got it right!");
-      // do nothing
     } else {
-      console.log("You got it wrong!");
+      slideText.innerHTML = "You got it wrong, try again!";
+      slideText.style.color = "#783f8e";
+      //slideText.style.fontSize = "1.5em";
+      //console.log("You got it wrong!");
 
       const reverseMap = mapRange(
         0,
@@ -124,6 +131,8 @@ function addEventListener() {
       slider.style.backgroundColor = "#8252ab";
       userSelectedText.innerHTML = `You selected:`;
       correctAnswerText.innerHTML = `The correct answer is:`;
+      slideText.innerHTML = "Slide to record your answer:";
+      slideText.style.color = "initial";
 
       columns.forEach((column) => {
         column.style.backgroundColor = "#8252ab";
