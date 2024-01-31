@@ -140,9 +140,6 @@ footer a:hover {
     margin: 0.5em;
   }
 
-  .items-container {
-    justify-content: space-evenly;
-  }
   .column {
     margin-left: 2em;
   }
