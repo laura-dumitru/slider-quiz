@@ -109,7 +109,7 @@ slider.addEventListener("change", function (event) {
       gsap.to(slider, {
         value: reverseMap - margin,
         duration: 1, // Adjust duration as needed
-        delay: 1.5,
+        delay: 1,
         ease: Power1.easeInOut,
       });
     }
