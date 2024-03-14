@@ -19,3 +19,7 @@ git clone https://laura-dumitru.github.io/slider-quiz/
 ```
 
 Since this is an example project I would encourage you to clone and rename it so that you can use it for your own purposes.
+
+## Employers
+
+You can see the original code I built while working at Mobkoi here: [Link to my gist](https://gist.github.com/laura-dumitru/8941bfcda5d722a8a78ae0b66128f697)
